@@ -112,8 +112,15 @@ function finish() {
             bot.pathfinder.setGoal(goal, true)
 
             bot.on('path_reset', (error) => {
-                console.log(error)
+                if (error === 'dig_error') {
+                    setTimeout(() => {
+                        bot.pathfinder.setGoal(null)
+                        interaction.editReply('Error digging, try again!')
+                    }, 1000)
+                }
             })
+
+
 
             followOn = true
             interaction.reply(`\`Now following\` **${target.username}**`)
@@ -123,7 +130,8 @@ function finish() {
                 interaction.reply('The bot is not following anyone!')
                 return;
             }
-            bot.pathfinder.setGoal(null)
+            interaction.reply('Stopped Following!')
+            bot.pathfinder.setGoal(null);
             setTimeout(() => {
                 followOn = false
             }, 2000)
