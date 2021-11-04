@@ -39,8 +39,12 @@ function finish() {
         username: email,
         password: password
     })
-    bot.on('chat', (username, message) => {
+    /* bot.on('chat', (username, message) => {
         console.log(`${username} > ${message}`)
+    }) */
+
+    bot.on('message', (message) => {
+        console.log(message.toAnsi())
     })
 
     bot.once('spawn', () => {
@@ -135,6 +139,10 @@ function finish() {
             setTimeout(() => {
                 followOn = false
             }, 2000)
+        }
+        if (commandName === 'quit') {
+            interaction.reply(`\`Ending ${bot.username}\` see you soon! 👋`)
+            bot.quit('Requested Quit.')
         }
     })
 

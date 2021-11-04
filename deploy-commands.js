@@ -37,7 +37,10 @@ const commands = [
         ),
     new SlashCommandBuilder()
         .setName('stopfollow')
-        .setDescription('Stops following player')
+        .setDescription('Stops following player'),
+    new SlashCommandBuilder()
+        .setName('quit')
+        .setDescription('Closes bot and process')
 ]
     .map(command => command.toJSON());
 
