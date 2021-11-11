@@ -142,8 +142,11 @@ function finish() {
         }
         if (commandName === 'quit') {
             interaction.reply(`\`Ending ${bot.username}\` see you soon! 👋`)
-            bot.quit('Requested Quit.')
-            process.exit()
+            setTimeout(() => {
+                bot.quit('Requested Quit.')
+                process.exit()
+            }, 1400)
+
         }
     })
 
